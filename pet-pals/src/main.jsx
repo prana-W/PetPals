@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
-import { Home, CuteList, About, PetDetail, Error, LandingPage } from "./Pages";
+import { Home, CuteList, About, PetDetail, Error, LandingPage, Adopt } from "./Pages";
 import "./index.css";
 import App from "./App.jsx";
 import {Toaster} from 'react-hot-toast'
@@ -36,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: '/welcome',
         element: <LandingPage />
+      },
+      {
+        path: '/adopt',
+        element: <Adopt />
       }
     ],
   },

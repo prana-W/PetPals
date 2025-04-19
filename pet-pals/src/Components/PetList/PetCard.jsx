@@ -1,8 +1,12 @@
 import React, { useRef } from "react";
 import { motion, useTransform, useScroll } from "framer-motion";
 import petData from "../../allPets";
+import { useNavigate } from "react-router-dom";
 
 const Example = ({ type = "" }) => {
+
+
+
   const allPets = petData();
   const petsToShow =
     type === ""
@@ -39,7 +43,7 @@ const HorizontalScrollCarousel = ({ pets }) => {
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-6 px-6">
           {pets.map((pet, index) => (
-            <ScrollCard pet={pet} key={index} />
+            <ScrollCard pet={pet} key={index} id={index+1}/>
           ))}
         </motion.div>
       </div>
@@ -47,11 +51,13 @@ const HorizontalScrollCarousel = ({ pets }) => {
   );
 };
 
-const ScrollCard = ({ pet }) => {
+const ScrollCard = ({ pet, id }) => {
+    const navigate = useNavigate()
   return (
     <div
       key={pet.name}
       className="group relative h-[450px] w-[350px] rounded-xl overflow-hidden bg-zinc-700 shadow-lg"
+      onClick={() => navigate (`/pet-detail/${id}`)}
     >
       <div
         style={{
