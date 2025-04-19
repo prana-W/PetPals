@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from '../../src/Components/PetList/Card.jsx'; //!
 
 function CuteList() {
   const data = JSON.parse(localStorage.getItem('cuteList')) || [];
@@ -11,7 +12,7 @@ function CuteList() {
             key={index}
             className="bg-white dark:bg-zinc-900 rounded-2xl shadow-md p-4 flex flex-col items-center"
           >
-            {pet.image && (
+            {/* {pet.image && (
               <img
                 src={pet.image}
                 alt={pet.name}
@@ -23,7 +24,13 @@ function CuteList() {
             </h2>
             <p className="text-gray-600 dark:text-gray-300 text-sm capitalize">
               {pet.type}
-            </p>
+            </p> */}
+            <Card
+              name={pet.name}
+              type={pet.type}
+              tag={pet.tag}
+              id={index+1}
+              image={pet.image} />
           </div>
         ))
       ) : (
