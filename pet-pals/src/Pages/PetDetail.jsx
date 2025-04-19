@@ -51,9 +51,9 @@ function PetDetail() {
           >
             Add to Cute List!
           </button>
-
+<br />
           <button
-            onClick={navigate('/adopt')}
+            onClick={() => navigate('/adopt')}
             className="px-8 py-3 bg-orange-600 text-white font-semibold rounded-full shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 ease-in-out"
           >
             Adopt

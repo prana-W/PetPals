@@ -18,7 +18,7 @@ const router = createBrowserRouter([
         element: <LandingPage />,
       },
       {
-        path: 'pets',
+        path: 'pets/:id',
         element: <Home />,
       },
       {

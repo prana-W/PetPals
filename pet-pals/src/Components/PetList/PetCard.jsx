@@ -2,14 +2,22 @@ import React, { useRef } from "react";
 import { motion, useTransform, useScroll } from "framer-motion";
 import petData from "../../allPets";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const Example = ({ type = "" }) => {
+const Example = () => {
 
+    let type = useParams()
 
+    if (type) {
+        type = type.id
+    }else type = ""
+
+    console.log(type);
 
   const allPets = petData();
+
   const petsToShow =
-    type === ""
+    type == ""
       ? allPets
       : allPets.filter((pet) => pet.type.toLowerCase() === type.toLowerCase());
 
@@ -27,6 +35,7 @@ const Example = ({ type = "" }) => {
         </span>
       </div>
     </div>
+    // <h1>test</h1>
   );
 };
 
