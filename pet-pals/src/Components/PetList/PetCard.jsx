@@ -17,7 +17,7 @@ const Example = () => {
   const allPets = petData();
 
   const petsToShow =
-    type == ""
+    type == "t"
       ? allPets
       : allPets.filter((pet) => pet.type.toLowerCase() === type.toLowerCase());
 
