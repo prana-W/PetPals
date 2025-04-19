@@ -1,9 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
-import { Home, CuteList, About, PetDetail, Error } from "./Pages";
+import { Home, CuteList, About, PetDetail, Error, LandingPage } from "./Pages";
 import "./index.css";
 import App from "./App.jsx";
+import {Toaster} from 'react-hot-toast'
+
 
 const router = createBrowserRouter([
   {
@@ -13,6 +15,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
+        element: <LandingPage />,
+      },
+      {
+        path: 'pets',
         element: <Home />,
       },
       {
@@ -27,12 +33,18 @@ const router = createBrowserRouter([
         path: "/pet-detail/:id",
         element: <PetDetail />,
       },
+      {
+        path: '/welcome',
+        element: <LandingPage />
+      }
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <Toaster position="top-left"/>
     <RouterProvider router={router} />
+
   </StrictMode>
 );

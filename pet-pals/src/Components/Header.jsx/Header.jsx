@@ -23,6 +23,16 @@ const Header = () => {
           Home
         </NavLink>
         <NavLink
+          to="/pets"
+          className={({ isActive }) =>
+            isActive
+              ? "text-orange-500 dark:text-purple-400"
+              : "hover:text-orange-500 dark:hover:text-purple-400 transition"
+          }
+        >
+          Pets
+        </NavLink>
+        <NavLink
           to="/cute-list"
           className={({ isActive }) =>
             isActive

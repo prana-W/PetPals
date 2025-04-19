@@ -4,5 +4,6 @@ import CuteList from "./CuteList";
 import Home from "./Home";
 import PetDetail from "./PetDetail";
 import Error from "./Error";
+import LandingPage from "./LandingPage";
 
-export {About, Adopt, CuteList, Home, PetDetail, Error};
+export {About, Adopt, CuteList, Home, PetDetail, Error, LandingPage};
