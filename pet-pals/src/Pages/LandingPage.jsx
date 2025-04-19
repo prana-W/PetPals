@@ -13,7 +13,7 @@ function LandingPage() {
         </p>
         <div className="mt-8 flex gap-4 flex-wrap justify-center">
           <Link
-            to="/pets"
+            to="/pets/t"
             className="px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-xl transition shadow-lg"
           >
             View Pets

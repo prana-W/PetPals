@@ -10,7 +10,7 @@ const Example = () => {
 
     if (type) {
         type = type.id
-    }else type = ""
+    }else type = "t"
 
     console.log(type);
 
