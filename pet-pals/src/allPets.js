@@ -1,7 +1,7 @@
 export default function allPets () {
   
   return [
-    { name: "Henry", type: "Dog", tag: "Cute", image: "#" },
+    { name: "Henry", type: "Dog", tag: "Cute", image: "" },
     { name: "Bella", type: "Dog", tag: "Fluffy", image: "#" },
     { name: "Max", type: "Dog", tag: "Playful", image: "#" },
     { name: "Charlie", type: "Dog", tag: "Loyal", image: "#" },

@@ -1,23 +1,72 @@
-import React from "react";
-import Card from "./Card";
-import petData from "../../allPets"
+import React, { useRef } from "react";
+import { motion, useTransform, useScroll } from "framer-motion";
+import petData from "../../allPets";
 
-function PetCard({ type = "" }) {
-
-    const allPets = petData()
-
+const Example = ({ type = "" }) => {
+  const allPets = petData();
   const petsToShow =
     type === ""
       ? allPets
       : allPets.filter((pet) => pet.type.toLowerCase() === type.toLowerCase());
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-      {petsToShow.map((pet, index) => (
-        <Card key={index} {...pet} id={index + 1} />
-      ))}
+    <div className="bg-neutral-800">
+      <div className="flex h-48 items-center justify-center">
+        <span className="font-semibold uppercase text-neutral-500">
+          Scroll down
+        </span>
+      </div>
+      <HorizontalScrollCarousel pets={petsToShow} />
+      <div className="flex h-48 items-center justify-center">
+        <span className="font-semibold uppercase text-neutral-500">
+          Scroll up
+        </span>
+      </div>
     </div>
   );
-}
+};
 
-export default PetCard;
+const HorizontalScrollCarousel = ({ pets }) => {
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
+
+  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
+
+  return (
+    <section ref={targetRef} className="relative h-[300vh] bg-neutral-900">
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+        <motion.div style={{ x }} className="flex gap-6 px-6">
+          {pets.map((pet, index) => (
+            <ScrollCard pet={pet} key={index} />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const ScrollCard = ({ pet }) => {
+  return (
+    <div
+      key={pet.name}
+      className="group relative h-[450px] w-[350px] rounded-xl overflow-hidden bg-zinc-700 shadow-lg"
+    >
+      <div
+        style={{
+          backgroundImage: `url(${pet.image || "/default-dog.jpg"})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110"
+      />
+      <div className="absolute inset-0 z-10 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
+        <h3 className="text-xl font-bold text-white">{pet.name}</h3>
+        <p className="text-sm text-purple-300 capitalize">{pet.type}</p>
+      </div>
+    </div>
+  );
+};
+
+export default Example;
